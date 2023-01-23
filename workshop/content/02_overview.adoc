@@ -15,3 +15,4 @@ image:./images/rhte_2023_gitops_aap2.png[Architecture Image,width=600]
 === Red Hat Openshift-pipeline
 === Red Hat Advance Cluster Security
 === Red Hat Ansible Automation Platform
+=== Red Hat Enterprise Linux
