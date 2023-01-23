@@ -1,0 +1,13 @@
+---
+modules:
+  01_introduction:
+    name: GitOps AAP2
+    exit_sign: Overview
+  02_overview:
+    name: Overview
+    exit_sign: Lab_section_1
+  03_lab_section_1:
+    name: Lab_section_1
+    exit_sign: Lab_section_2
+  04_lab_section_2:
+    name: Lab_section_2

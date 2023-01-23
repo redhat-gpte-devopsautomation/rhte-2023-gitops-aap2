@@ -1,0 +1,8 @@
+---
+name: GitOps AAP2
+modules:
+  activate:
+    - 01_introduction
+    - 02_overview 
+    - 03_lab_section_1
+    - 04_lab_section_2
