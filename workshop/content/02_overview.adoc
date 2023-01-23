@@ -1,9 +1,10 @@
 :numbered:
+:imagedir: ./images
 
 == Overview
 
 .Architecture
-image:./images/rhte_2023_gitops_aap2.jpg[Architecture Image,width=600]
+image:./images/rhte_2023_gitops_aap2.png[Architecture Image,width=600]
 
 
 == Products Description
