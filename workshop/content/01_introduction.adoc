@@ -1,0 +1,27 @@
+:numbered:
+
+= Managing Ansible Automation Platform Execution Environment through GitOps
+
+== Introduction
+
+Reproducibility and consistency are two key traits that are the driving forces behind the popularity of containers. Consistency is also a principle found within Red Hat Ansible Automation Platform. With only a few lines of YAML-formatted manifests, thousands of instances can be set up and configured uniformly. While the management of target instances is simple, it is the control node, or where the Ansible execution is initiated, that can  be the most challenging aspect. As Ansible is written in Python, does the machine have the correct version of Python installed?  Are the necessary Python modules installed? Are there any operating system dependencies needed? The list goes on and on.
+
+These concerns, along with many others, led to a desire to leverage the benefits of containers to perform the control node’s role and eventually ushered in the concept of automation execution environments in Ansible Automation Platform 2.
+
+=== Let's start by understanding EEs
+
+Automation execution environments are container images on which all automation in Red Hat® Ansible® Automation Platform is run.
+
+They provide a defined, consistent, and portable environment for executing automation, and allow for easier administration of Ansible Automation Platform by the platform administrator.
+
+The best way to build EEs is relying on a new tool provided by Red Hat® Ansible® Automation Platform, the ansible-builder cli. In order to automate the build of EEs, we can make use of OpenShift Pipelines as well.
+
+
+== Objective
+
+This workshop will help users understand how EEs are customized, created and pushed to registry using openshift-pipelines. Covered topics:
+
+. Demonstrate the steps involved in the customizing EEs using Git repository. 
+. Demonstrate the steps involved in the creation EEs using openshift-pipelines
+. Demonstrate the steps involved in scanning EEs container images and pushing in central image registry(Automation Hub)
+. Demonstrate the steps involved in using custom EEs pushed in registry to run Job template from Automation Controller
