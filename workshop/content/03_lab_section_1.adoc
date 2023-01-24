@@ -2,7 +2,7 @@
 include::./variables.adoc[]
 
 
-= Lab Section-1: Pipeline to Build execution environment
+= Pipeline to Build execution environment
 
 In this section you have been contacted by the Ansible developer to investigate the root cause of the issue which results  in failure of Application deployment. The developer needs your expertise to resolve the issue. 
 
