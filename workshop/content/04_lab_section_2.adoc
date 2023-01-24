@@ -1,5 +1,24 @@
 :numbered:
-include::./variables.adoc[]
+:numbered:
+:GUID: %guid%
+:BASE_DOMAIN: FINDME
+:AC_URL: %ac_web_url%
+:AC_USER: %ac_user%
+:AC_PASSWORD: %ac_password%
+:AH_URL: %ah_web_url%
+:AH_USER: %ah_user%
+:AH_PASSWORD: %ah_password%
+:VSCODE_URL: %codeserver_url%
+:VSCODE_PASSWORD: %codeserver_password%
+:GITEA_URL: %gitea_console_url%
+:GITEA_USER: %users.devops1.gitea_user%
+:GITEA_PASSWORD: %users.devops1.gitea_password%
+:OC_CONSOLE_URL: %openshift_console_url%
+:OC_USER: %openshift_cluster_admin_username%
+:OC_PASSWORD: %openshift_cluster_admin_password%
+:BASTION_host: %bastion_public_hostname%
+:BASTION_USER: %bastion_ssh_user_name%
+:BASTION_PASSWORD: %bastion_ssh_password%
 
 = Automated pipeline to build execution environment
 
