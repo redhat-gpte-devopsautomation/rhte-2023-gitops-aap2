@@ -1,4 +1,5 @@
 :numbered:
+include::./variables.adoc[]
 
 
 = Lab Section-1
@@ -7,12 +8,12 @@ In this section you have been contacted by the Ansible developer to investigate 
 
 == Investigate the Issue
 
-* Let’s start with observing the cause of failed job run.
+* Let’s start with investigating the cause of failed job run.
 
-. Login to Automation controller then navigate to Jobs and click on multitier-app-deployer failed job. Now observe the reason for job run failure.
+. Login to Automation controller then navigate to Jobs and click on multitier-app-deployer failed job. 
 
 +
-.Login details-
+.Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
 |====
 | Elements | Value
@@ -30,12 +31,9 @@ community.postgresql.postgresql_db module is used in the playbook shown in the e
 
 
 == Review the codebase
-
-
-
 . Codebase
 +
-.Login details-
+.Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
 |====
 | Elements | Value
@@ -44,17 +42,27 @@ community.postgresql.postgresql_db module is used in the playbook shown in the e
 |====
 +
 image:./images/vscode.png[vscode,600]
++
+* *aap2-gitops*: Yaml manifests to install AAP2 on Openshift using openshift-gitops(ArgoCD).
+
+* *ee-pipeline*: Repository containing configuration files for buildah to build EEs for Section 1 of the workshop.
+* *ee-automated-pipeline*: Repository containing configuration files for buildah to build EEs for Section 2 of the workshop.
+* *multitier-aap*: Repository for Ansible Content to deploy Multi-tier applications. 
+
 
 == Resolution
 
 As a Consultant you have investigated that community.postgresql collection is missing from the default EE used by the Job Template.
 
-To resolve the issue you are going to build a custom EE which includes community.postgresql collection For automating the task to build a custom EEs you are utilizing openshift-pipeline (tekton). The tasks as part of the pipeline are triggered using a Webhook created on Gitea. The pipeline will be triggered only when a new tag and release  is created in the code base of EE. The EEs images will be tagged based on the tag name and pushed to Automation Hub. 
+To resolve the issue you are going to build a custom EE which includes community.postgresql collection. For automating the task to build a custom EEs you are utilizing openshift-pipeline (tekton). 
 
-. Pipeline: Defines a series of Tasks that accomplish a specific build or delivery goal. Can be triggered by an event or invoked from a PipelineRun.
+The *tasks* as part of the pipeline are triggered using a Webhook created on Gitea. The *pipeline* will be triggered only when a new tag and release  is created in the code base of EE. The EEs images will be tagged based on the tag name and pushed to *Private Automation Hub*. 
+
+. *Pipeline:* Defines a series of Tasks that accomplish a specific build or delivery goal. Can be triggered by an event or invoked from a PipelineRun.
 The pipeline has already been configured for this workshop.
+
 +
-.Login details-
+.Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
 |====
 | Elements | Value
@@ -65,14 +73,14 @@ The pipeline has already been configured for this workshop.
 +
 .Pipeline
 image:./images/pipeline-1.png[p1,600]
++
+* *Tasks:* Defines a series of steps which launch specific build or delivery tools that ingest specific inputs and produce specific outputs.
 
-. Tasks: Defines a series of steps which launch specific build or delivery tools that ingest specific inputs and produce specific outputs.
+* *Pipelinerun:* Instantiates a Pipeline for execution with specific inputs, outputs, and execution parameters.
 
-. Pipelinerun: Instantiates a Pipeline for execution with specific inputs, outputs, and execution parameters.
+* *Trigger:* specifies what happens when the EventListener detects an event.
 
-. Trigger - specifies what happens when the EventListener detects an event.
-
-. EventListener - listens for events on Kubernetes cluster. Specifies one or more Triggers.
+* *EventListener:* listens for events on Kubernetes cluster. Specifies one or more Triggers.
 
 . Find event-listener's route for creating webhook.
  .. Go to networking -> route -> p1-section1-event-listener then copy Location url and keep it saved 
@@ -81,4 +89,152 @@ image:./images/pipeline-1.png[p1,600]
 .. Go to workloads -> secrets -> click on p1-section1-trigger-secret, then copy secretToken and save it we will it when creating webhook.
 
 
+. Login to Gitea and configure webhook for the *ee-pipeline* repository.
++
+.Login details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
+|====
+| Elements | Value
+| Gitea URL | {GITEA_URL}
+| Login user | {GITEA_USER}
+| Password | {GITEA_PASSWORD}
+|====
 
+. Click ee-pipeline repository --> settings --> webhook --> Click Add Webhook --> select Gitea
+
++
+.Gitea webhook:
+image:./images/gitea_webhook_1.png[webhook1,600]
+
+. Fill the webhook form as follows:
+.. Copy event listner route in *Target URL*
+.. Copy event listener secret in *Secret*
+.. Select Custom Events
+.. Select Release
+.. Click on the Add Webhook button to create webhook.
+
++
+.Gitea webhook page:
+image:./images/gitea_webhook_2.png[webhook2,600]
+
+. Login to vscode to update the execution environment codebase.
++
+.Login details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
+|====
+| Elements | Value
+| Vscode URL | {VSCODE_URL}
+| Password | {VSCODE_PASSWORD}
+|====
+
+. Expand ee-pipeline codebase directory and update following collection in the requirements.yml file.
+
++
+[source,text]
+----
+  - name: community.postgresql
+    version: 2.3.2
+----
++
+.Add collection
+image:./images/vscode_req_1.png[req1,600]
+
++
+NOTE: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/ansible_builder_guide/index#con-building-definition-file
+
+. Commit and push the changes to git as shown in the picture.
++
+.Commit and Push
+image:./images/vscode_req_2.png[req2,600]
+
++
+.Confirm
+image:./images/vscode_req_3.png[req3,600]
+
+
+. You are ready to run pipeline to build execution environment.
+.. Go to gitea and create new release *2.0.0* which will trigger pipeline using webhook created in the previous steps.
++
+.Release 2.0.0
++
+image:./images/release_1.png[release,600]
+
++
+.Publish
+image:./images/release_2.png[release,600]
+
+. Observe that pipeline has triggered to build the EE and push to Private automation hub.
++
+.Login details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
+|====
+| Elements | Value
+| Console URL | link:{OC_CONSOLE_URL}/k8s/ns/ansible-ee-pipeline/tekton.dev\~v1beta1~Pipeline/p1-section1-pipeline-ee-builder[]
+| Login user | {OC_USER}
+| Password | {OC_PASSWORD}
+|====
+
+. After login click pipelineRuns tab to check.
++
+.PipelineRun
+image:./images/pipeline_run_1.png[run,600]
+
+. Login to Private Automation Hub to check new EE ee-pipeline is created. 
++
+.Login details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
+|====
+| Elements | Value
+| Hub URL | {AH_URL}
+| Login user | {AH_USER}
+| Password | {AH_PASSWORD}
+|====
+
+. Click *Execution Environment* --> *ee-pipeline* --> *images*
++
+.Image Tag
+image:./images/ee_build_1.png[build,600]
+
+. Login to Automation Controller. Add execution environment and update job template.
+
++
+.Login details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
+|====
+| Elements | Value
+| Controller URL | {AC_URL}
+| Login user | {AC_USER}
+| Password | {AC_PASSWORD}
+|====
+
+
+. Click on *Execution Environment* then click on *Add* to add new EE as follows.
++
+.EE details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a"]
+|===
+| Name |  ee-pipeline
+| Image |  hub-ansible-automation-platform.apps.cluster-{GUID}.{BASE_DOMAIN}/ee-pipeline:2.0.0
+| Pull | Only pull the image if not present before running.
+| Registry credential | hub_registry_credentials
+|===
+
++
+.Execution Environment
+image:./images/ee_build_2.png[ee,600]
+
+
+. Update EE in *multitier-app-deployer* job template.
++
+image:./images/job_template_1.png[job,600]
+
+. Verify the application has deployed using the following link.
++
+.EE details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a"]
+|===
+| Application URL | link:http://frontend.{GUID}.{BASE_DOMAIN}[]
+|===
++
+.Web Application
+image:./images/frontend.png[frontend,600]
