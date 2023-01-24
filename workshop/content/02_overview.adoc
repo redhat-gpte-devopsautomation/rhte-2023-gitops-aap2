@@ -7,12 +7,8 @@
 image:./images/rhte_2023_gitops_aap2.png[Architecture Image,width=600]
 
 
-== Products Description
-=== Gitea
-=== Vscode
-=== Red Hat Openshift
-=== Red Hat Openshift-Gitops
-=== Red Hat Openshift-pipeline
-=== Red Hat Advance Cluster Security
-=== Red Hat Ansible Automation Platform
-=== Red Hat Enterprise Linux
+
+== Let’s understand this architecture a bit
+
+We use the Git Ops framework, so when an Automation Engineer updates the private Gitea repository with a new requirement from VSCode triggers the OpenShift Pipelines for Continuous Integration. The pipeline will build a new execution environment and push it to the container registry. This image is scanned for any security vulnerabilities by Advanced Cluster Security and once it passes ACS scan the new image is then updated to the Private Automation Hub and then to the Automation Controller. 
+Note that once the new image is available post scan and if it needs to be deployed, Automation Controller Job Template will use the EE to run the jobs. OpenShift Git Ops Is being used to deploy as well as manage AAP2 similar to the way we deploy any other containerized application using a continuous deployment process.
