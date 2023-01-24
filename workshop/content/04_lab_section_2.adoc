@@ -1,5 +1,4 @@
 :numbered:
-:numbered:
 :GUID: %guid%
 :BASE_DOMAIN: FINDME
 :AC_URL: %ac_web_url%
