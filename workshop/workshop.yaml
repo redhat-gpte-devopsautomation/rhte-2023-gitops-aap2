@@ -1,8 +1,9 @@
 ---
-name: GitOps AAP2
+name: Managing Ansible Automation Platform Execution Environment through GitOps
 modules:
   activate:
     - 01_introduction
     - 02_overview 
     - 03_lab_section_1
     - 04_lab_section_2
+    - 05_references

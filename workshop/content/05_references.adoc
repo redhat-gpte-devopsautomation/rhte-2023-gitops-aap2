@@ -1,0 +1,18 @@
+:numbered:
+:imagedir: ./images
+
+== Overview
+
+.Architecture
+image:./images/rhte_2023_gitops_aap2.png[Architecture Image,width=600]
+
+
+== Products Description
+=== Gitea
+=== Vscode
+=== Red Hat Openshift
+=== Red Hat Openshift-Gitops
+=== Red Hat Openshift-pipeline
+=== Red Hat Advance Cluster Security
+=== Red Hat Ansible Automation Platform
+=== Red Hat Enterprise Linux
