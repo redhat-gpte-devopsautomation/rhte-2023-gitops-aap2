@@ -9,7 +9,7 @@
 :AH_PASSWORD: %ah_password%
 :VSCODE_URL: %codeserver_url%
 :VSCODE_PASSWORD: %codeserver_password%
-:GITEA_URL: %titea_console_url%
+:GITEA_URL: %gitea_console_url%
 :GITEA_USER: %users.devops1.gitea_user%
 :GITEA_PASSWORD: %users.devops1.gitea_password%
 :OC_CONSOLE_URL: %openshift_console_url%
