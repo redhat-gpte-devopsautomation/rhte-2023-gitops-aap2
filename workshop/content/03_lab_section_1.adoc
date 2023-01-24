@@ -238,3 +238,18 @@ image:./images/job_template_1.png[job,600]
 +
 .Web Application
 image:./images/frontend.png[frontend,600]
+
+== Clean up
+
+Before you move to the next lab. Please run following clean job templates.
+
+. Login to Automation Controller and Run the *multitier-app-teardown* job template to cleanup. 
++
+.Login details:
+[%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
+|====
+| Elements | Value
+| Controller URL | {AC_URL}
+| Login user | {AC_USER}
+| Password | {AC_PASSWORD}
+|====

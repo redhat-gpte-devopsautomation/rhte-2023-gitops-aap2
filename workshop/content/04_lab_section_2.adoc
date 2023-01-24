@@ -3,16 +3,16 @@ include::./variables.adoc[]
 
 = Automated pipeline to build execution environment
 
-In this section, we are showing you how to utilize the openshift-pipeline as the CI to fully automate the tasks from building EE to running the Job template using the EE which was built as part of the same CI process. 
+In this section, we are showing you how to utilize the openshift-pipeline as the CI to fully automate the tasks from building EE to running the Job template and using the EE which was built as part of the same CI process. 
 
 .Automated Pipeline
 image:./images/pipeline_2.png[pipeline,600]
 
 In this section, The pipeline includes additional tasks which use Red Hat Advance Cluster Security to scan and check for vulnerabilities in EE images.
 
-Image scan will scan and report back the component with vulnerability found in the image being scanned.
+*Image Scan:* will scan and report back the component with vulnerability found in the image being scanned.
 
-Image check will check for build-time violations of your security policies in images
+*Image Check:* will check for build-time violations of your security policies in images
 
 The pipeline also includes tasks which do API calls to update the Job template on Automation Controller with newly built custom EE and run the Job template as CI process. 
 
@@ -28,7 +28,7 @@ The pipeline also includes tasks which do API calls to update the Job template o
 | Password | {VSCODE_PASSWORD}
 |====
 
-. Expand ee-automated-pipeline codebase directory and update following collection in the requirements.yml file then commit and push the changes to git.
+. Expand *ee-automated-pipeline* codebase directory and update following collection in the *requirements.yml* file then commit and push the changes to git.
 
 +
 [source,text,width=600]
@@ -77,7 +77,7 @@ NOTE: Gitea webhook is already configured to trigger the pipeline.
 |====
 
 . Login to Automation Controller:
-.. Verify new execution environment ee-automated-pipeline has been added.
+.. Verify the new execution environment *ee-automated-pipeline* has been added.
 .. Verify *multitier-app-deployer* job template has been update to use new *ee-automated-pipeline* EE.
 .. Verify new job must have been run.
 +
