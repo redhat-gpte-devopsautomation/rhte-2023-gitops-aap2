@@ -14,15 +14,12 @@
 
 # Enable the following line to disable the right-hand pane entirely.
 # Only use this if you have no terminal, no slides, and no console.
-export DEFAULT_PAGE='dashboard'
+export DEFAULT_PAGE='workshop'
 
 # Flags to explicitly enable/disable specific components
 ENABLE_CONSOLE='false'
 ENABLE_DASHBOARD='true'
 ENABLE_SLIDES='true'
-# SLIDES_DIR='/opt/app-root/slides'
-ENABLE_TERMINAL='true'
+ENABLE_TERMINAL='false'
 #ENABLE_WEBDAV='false'
 ENABLE_WORKSHOP='true'
-APPLICATION_NAME='bookbag'
-WORKSHOP_NAME='bookbag'
