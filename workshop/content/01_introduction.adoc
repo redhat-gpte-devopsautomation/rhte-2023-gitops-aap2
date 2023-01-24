@@ -13,10 +13,15 @@ Since we leverage container’s and have a single source of truth, we can use th
 == Objective:
 
 This workshop will help users understand how EEs are customized, created and pushed to registry using openshift-pipelines. 
-Covered topics:
+
+.Covered topics:
+
 . Demonstrate the steps involved in the customizing EEs using Git repository. 
-. Demonstrate the steps involved in the creation EEs using openshift-pipelines
-. Demonstrate the steps involved in scanning EEs container images and pushing in central image registry(Automation Hub)
+
+. Demonstrate the steps involved in the creation EEs using openshift-pipelines.
+
+. Demonstrate the steps involved in scanning EEs container images and pushing in central image registry(Automation Hub).
+
 . Demonstrate the steps involved in using custom EEs pushed in registry to run Job template from Automation Controller
 
 
