@@ -11,7 +11,7 @@
 :VSCODE_PASSWORD: %codeserver_password%
 :GITEA_URL: %gitea_console_url%
 :GITEA_USER: devops1
-:GITEA_PASSWORD: %openshift_cluster_admin_password%
+:GITEA_PASSWORD: %codeserver_password%
 :OC_CONSOLE_URL: %openshift_console_url%
 :OC_USER: %openshift_cluster_admin_username%
 :OC_PASSWORD: %openshift_cluster_admin_password%
@@ -22,16 +22,17 @@
 
 == Pipeline to Build Execution Environment
 
-In this section, you will be working closely with the Ansible developer to troubleshoot and resolve an issue that is causing a failure in the deployment of the application. Using your expertise in the OpenShift GitOps framework and the Automation Controller, you will investigate the root cause of the issue and implement a solution to ensure successful deployment in the future. 
+In this section, you will be working closely with an Ansible developer to troubleshoot and resolve an issue that is causing a failure in the deployment of the application. 
+Using your expertise in OpenShift and Ansible Automation Platform, you will investigate the issue and identify the root cause. 
+You will then implement a solution to ensure successful deployments in the future. 
 
-The goal of this task is to quickly and efficiently identify and fix the problem, to minimize downtime and ensure the smooth operation of the application.
+The goal of this task is to quickly and efficiently identify and fix the problem, minimize downtime, and ensure the smooth deployment and operation of the application.
 
 == Investigate the Issue
 
-* Let’s start with investigating the cause of failed job run.
+* Let’s start by investigating the cause of failed job run.
 
-. Login to Automation controller then navigate to Jobs and click on multitier-app-deployer failed job. 
-
+. Login to your Automation controller
 +
 .Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
@@ -42,13 +43,38 @@ The goal of this task is to quickly and efficiently identify and fix the problem
 | Password | {AC_PASSWORD}
 |====
 +
+
+. Navigate to the *Templates* Screen and chose the failing *Job Template* `multitier-app-deployer`
++
+
+image:./images/job_template_multi-Tier_app.png[job,600]
++
+
+. Launch the top Template `multitier-app-deployer` via the Rocket Icon 
++
+
+. You will be taken to the *Output* screen where, after a short delay, as the Project Syncs and the Execution Environment starts, you will see a failure very early in the process 
++
+
 .Failed Job output
 image:./images/job_run_failed.png[job,600]
-
 +
-[NOTE] 
-community.postgresql.postgresql_db module is used in the playbook shown in the error, which is missing in the default execution environment.
 
+[NOTE] 
+The `community.postgresql.postgresql_db`` module is used in the playbook shown in the error, which is missing in the default execution environment.
+
+There are 2 ways that a missing collection error like this can be resolved. Both involve adding the dependency to a `requirements.yml` file in 1 of 2 locations.
+
+* Add it to the playbook repository itself, and the Execution Environment will dynamically download it at runtime
+** This is, arguably, an easy but inefficient fix, which will download it every single Job run
+** It introduces an external dependency where an outage could cause job failure
+* Add the dependency to the Execution Environment build repository
+
+Wanting a more permanent fix, avoiding dynamic downloads we will choose the latter.
+
+[NOTE]
+In the development stage it is quite common to add collections in the deployer repos `requirements.yml` and additionally this can be used to extend an existing EE.
+There is a strong argument to be made that these should either come from a known good source such as Ansible Galaxy or be brought "behind the firewall" and hosted internally. EG Private Automation Hub and/or internal Git Repos.
 
 == Review the codebase
 . Codebase
@@ -74,9 +100,9 @@ image:./images/vscode.png[vscode,600]
 
 As a Consultant, you have identified an issue with the Job Template in your workshop environment. The *community.postgresql* collection is missing from the default *Execution Environment* (EE) being used by the Job Template. To resolve this issue, you will be building a custom EE that includes the community.postgresql collection.
 
-To automate this task, you will be using the *openshift-pipeline (tekton)* framework. The pipeline will be triggered automatically by a webhook that you have set up on Gitea. When a new tag and release is created in the code base of the EE, the pipeline will start running and automatically build the new custom EE. The new EE images will be tagged with the same name and pushed to the *Private Automation Hub*.
+To automate this task, you will be using the *openshift-pipeline (tekton)* framework. The pipeline will be triggered automatically by a webhook that you have set up on Gitea. When a new tag and release are created in the code base of the EE, the pipeline will start running and automatically build the new custom EE. The new EE images will be tagged with the same name and pushed to the *Private Automation Hub*.
 
-The *tasks* as part of the pipeline are triggered using a Webhook created on Gitea. The *pipeline* will be triggered only when a new tag and release  is created in the code base of EE. The EEs images will be tagged based on the tag name and pushed to *Private Automation Hub*. 
+The *tasks* as part of the pipeline are triggered using a Webhook created on Gitea. The *pipeline* will be triggered only when a new tag and release is created in the code base of EE. The EEs images will be tagged based on the tag name and pushed to *Private Automation Hub*. 
 
 . *Pipeline:* Defines a series of Tasks that accomplish a specific build or delivery goal. Can be triggered by an event or invoked from a PipelineRun.
 The pipeline has already been configured for this workshop.
@@ -94,22 +120,22 @@ The pipeline has already been configured for this workshop.
 .Pipeline
 image:./images/pipeline-1.png[p1,600]
 +
-* *Tasks:* Defines a series of steps which launch specific build or delivery tools that ingest specific inputs and produce specific outputs.
+* *Tasks:* Defines a series of steps that launch specific build or delivery tools that ingest specific inputs and produce specific outputs.
 
 * *Pipelinerun:* Instantiates a Pipeline for execution with specific inputs, outputs, and execution parameters.
 
 * *Trigger:* specifies what happens when the EventListener detects an event.
 
-* *EventListener:* listens for events on Kubernetes cluster. Specifies one or more Triggers.
+* *EventListener:* listens for events on the Kubernetes cluster. Specifies one or more Triggers.
 
-. Find event-listener's route for creating webhook.
- .. Go to networking -> route -> p1-section1-event-listener then copy Location url and keep it saved 
+. Find the event listener's route for creating a webhook.
+ .. Go to networking -> route -> p1-section1-event-listener then copy the Location URL and keep it saved 
 
-. Find event-listener's secret for creating webhook.
-.. Go to workloads -> secrets -> click on p1-section1-trigger-secret, then copy secretToken and save it we will it when creating webhook.
+. Find the event listener's secret for creating a webhook.
+.. Go to workloads -> secrets -> click on p1-section1-trigger-secret, then copy secretToken and save it we will it when creating a webhook.
 
 
-. Login to Gitea and configure webhook for the *ee-pipeline* repository.
+. Login to Gitea and configure a webhook for the *ee-pipeline* repository.
 +
 .Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
@@ -126,18 +152,18 @@ image:./images/pipeline-1.png[p1,600]
 .Gitea webhook:
 image:./images/gitea_webhook_1.png[webhook1,600]
 
-. Fill the webhook form as follows:
-.. Copy event listner route in *Target URL*
+. Fill out the webhook form as follows:
+.. Copy event listener route in *Target URL*
 .. Copy event listener secret in *Secret*
 .. Select Custom Events
 .. Select Release
-.. Click on the Add Webhook button to create webhook.
+.. Click on the Add Webhook button to create the webhook.
 
 +
 .Gitea webhook page:
 image:./images/gitea_webhook_2.png[webhook2,600]
 
-. Login to vscode to update the execution environment codebase.
+. Login to VSCode to update the execution environment codebase.
 +
 .Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
@@ -147,7 +173,7 @@ image:./images/gitea_webhook_2.png[webhook2,600]
 | Password | {VSCODE_PASSWORD}
 |====
 
-. Expand ee-pipeline codebase directory and update following collection in the requirements.yml file.
+. Expand the `ee-pipeline` codebase directory and update the following collection in the `requirements.yml` file.
 
 +
 [source,text]
@@ -172,8 +198,8 @@ image:./images/vscode_req_2.png[req2,600]
 image:./images/vscode_req_3.png[req3,600]
 
 
-. You are ready to run pipeline to build execution environment.
-.. Go to gitea and create new release *2.0.0* which will trigger pipeline using webhook created in the previous steps.
+. You are ready to run the pipeline to build an Execution Environment.
+.. Go to Gitea and create a new release *2.0.0* which will trigger the pipeline using the webhook created in the previous steps.
 +
 .Release 2.0.0
 +
@@ -183,7 +209,7 @@ image:./images/release_1.png[release,600]
 .Publish
 image:./images/release_2.png[release,600]
 
-. Observe that pipeline has triggered to build the EE and push to Private automation hub.
+. Observe that the pipeline has triggered to build the EE and push to the Private Automation Hub.
 +
 .Login details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a",options="header"]
@@ -244,11 +270,11 @@ image:./images/ee_build_1.png[build,600]
 image:./images/ee_build_2.png[ee,600]
 
 
-. Update EE in *multitier-app-deployer* job template.
+. Update the EE in *multitier-app-deployer* job template.
 +
 image:./images/job_template_1.png[job,600]
 
-. Verify the application has deployed using the following link.
+. Verify the application has been deployed using the following link.
 +
 .EE details:
 [%autowidth.stretch,width=70%,cols="^.^a,^.^a"]
@@ -261,7 +287,7 @@ image:./images/frontend.png[frontend,600]
 
 == Clean up
 
-Before you move to the next lab. Please run following clean job templates.
+Before you move to the next lab. Please run the following clean job templates.
 
 . Login to Automation Controller and Run the *multitier-app-teardown* job template to cleanup. 
 +
