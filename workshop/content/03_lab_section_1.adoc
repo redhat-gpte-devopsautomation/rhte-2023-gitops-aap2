@@ -70,9 +70,9 @@ image:./images/vscode.png[vscode,600]
 
 == Resolution
 
-As a Consultant you have investigated that community.postgresql collection is missing from the default EE used by the Job Template.
+As a Consultant, you have identified an issue with the Job Template in your workshop environment. The community.postgresql collection is missing from the default Execution Environment (EE) being used by the Job Template. To resolve this issue, you will be building a custom EE that includes the community.postgresql collection.
 
-To resolve the issue you are going to build a custom EE which includes community.postgresql collection. For automating the task to build a custom EEs you are utilizing openshift-pipeline (tekton). 
+To automate this task, you will be using the openshift-pipeline (tekton) framework. The pipeline will be triggered automatically by a webhook that you have set up on Gitea. When a new tag or release is created in the code base of the EE, the pipeline will start running and automatically build the new custom EE. The new EE images will be tagged with the same name and pushed to the Private Automation Hub.
 
 The *tasks* as part of the pipeline are triggered using a Webhook created on Gitea. The *pipeline* will be triggered only when a new tag and release  is created in the code base of EE. The EEs images will be tagged based on the tag name and pushed to *Private Automation Hub*. 
 
