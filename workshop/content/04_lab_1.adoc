@@ -1,6 +1,6 @@
 :numbered:
 :GUID: %guid%
-:BASE_DOMAIN: FINDME
+:BASE_DOMAIN: %ocp4_base_domain%
 :AC_URL: %ac_web_url%
 :AC_USER: %ac_user%
 :AC_PASSWORD: %ac_password%
