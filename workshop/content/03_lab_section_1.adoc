@@ -1,6 +1,6 @@
 :numbered:
 :GUID: %guid%
-:BASE_DOMAIN: FINDME
+:BASE_DOMAIN: %sandbox_zone%
 :AC_URL: %ac_web_url%
 :AC_USER: %ac_user%
 :AC_PASSWORD: %ac_password%
@@ -10,8 +10,8 @@
 :VSCODE_URL: %codeserver_url%
 :VSCODE_PASSWORD: %codeserver_password%
 :GITEA_URL: %gitea_console_url%
-:GITEA_USER: %ac_user%
-:GITEA_PASSWORD: %ac_password%
+:GITEA_USER: devops1
+:GITEA_PASSWORD: %openshift_cluster_admin_password%
 :OC_CONSOLE_URL: %openshift_console_url%
 :OC_USER: %openshift_cluster_admin_username%
 :OC_PASSWORD: %openshift_cluster_admin_password%
