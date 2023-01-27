@@ -21,18 +21,18 @@
 
 = Automated pipeline to build execution environment
 
-In this section, we are showing you how to utilize the openshift-pipeline as the CI to fully automate the tasks from building EE to running the Job template and using the EE which was built as part of the same CI process. 
+This section will guide you through the process of customizing, creating, and pushing execution environments (EEs) to a central image registry using openshift-pipelines. By leveraging the Git Ops framework, we can ensure consistency and reproducibility throughout the automation process. We will demonstrate the steps involved in customizing EEs using a private Gitea repository, creating EEs using openshift-pipelines, scanning EEs for security vulnerabilities, and pushing the images to the private Automation Hub. Additionally, we will show how to use the custom EEs pushed to the registry to run job templates from the Automation Controller. By the end of this workshop, you will have a deeper understanding of how to fully automate the process of building and deploying EEs within the Ansible Automation Platform using OpenShift Git Ops.
 
 .Automated Pipeline
 image:./images/pipeline_2.png[pipeline,600]
 
-In this section, The pipeline includes additional tasks which use Red Hat Advance Cluster Security to scan and check for vulnerabilities in EE images.
+In this section, we will demonstrate how to fully automate the process of building and deploying an execution environment (EE) using the OpenShift pipeline as the continuous integration (CI) tool. The pipeline includes tasks that utilize Red Hat's Advanced Cluster Security to scan and check for vulnerabilities in the EE images.
 
-*Image Scan:* will scan and report back the component with vulnerability found in the image being scanned.
+First, the pipeline will perform an Image Scan task which will scan the EE image and report back any components with vulnerabilities found.
 
-*Image Check:* will check for build-time violations of your security policies in images
+Next, the pipeline will perform an Image Check task which will check the EE image for any build-time violations of security policies.
 
-The pipeline also includes tasks which do API calls to update the Job template on Automation Controller with newly built custom EE and run the Job template as CI process. 
+Once the EE image has passed the security checks, the pipeline will then use API calls to update the Job template on the Automation Controller with the newly built custom EE. The pipeline will then run the Job template as part of the CI process, ensuring that the EE is deployed and ready for use. Overall this process ensures the security and reliability of the deployed EE.
 
 == Activity
 
