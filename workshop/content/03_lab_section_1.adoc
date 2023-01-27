@@ -22,7 +22,7 @@
 
 = Pipeline to Build execution environment
 
-In this section you have been contacted by the Ansible developer to investigate the root cause of the issue which results  in failure of Application deployment. The developer needs your expertise to resolve the issue. 
+In this section, you will be working closely with the Ansible developer to troubleshoot and resolve an issue that is causing a failure in the deployment of the application. Using your expertise in the OpenShift Git Ops framework and the Automation Controller, you will investigate the root cause of the issue and implement a solution to ensure successful deployment in the future. The goal of this task is to quickly and efficiently identify and fix the problem, to minimize downtime and ensure the smooth operation of the application.
 
 == Investigate the Issue
 
