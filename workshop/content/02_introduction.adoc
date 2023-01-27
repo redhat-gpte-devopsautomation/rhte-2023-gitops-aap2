@@ -1,8 +1,5 @@
+== Managing Ansible Automation Platform Execution Environment through GitOps
 
-= Managing Ansible Automation Platform Execution Environment through GitOps
-
-
-== Introduction:
 The use of containers in automation is driven by the principles of reproducibility and consistency. The Red Hat Ansible Automation Platform also incorporates these principles through the use of YAML-formatted manifests, allowing for uniform setup and configuration of thousands of instances. However, managing the control node, or the location where Ansible execution is initiated, can be challenging due to factors such as the correct version of Python and necessary modules installed on the machine, as well as potential operating system dependencies.
 
 To address these concerns, the concept of automation execution environments (EEs) has been introduced in Ansible Automation Platform 2. By utilizing containers and maintaining a single source of truth, organizations can utilize the Git Ops operational framework to apply DevOps best practices, such as version control, collaboration, compliance, and CI/CD tooling, to infrastructure automation.
@@ -21,13 +18,6 @@ This workshop aims to provide participants with an understanding of how EEs can 
 
 . Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Automation Controller.
 
-== Goal
-
-In this workshop, you will learn how to utilize the openshift-pipeline (tekton) as the CI to fully automate the tasks from building a custom EE that includes the missing community.postgresql collection, to updating the Job template on Automation Controller with the newly built EE and running the Job template as part of the same CI process.
-
-You will also learn how to use a webhook created on Gitea to trigger the pipeline only when a new tag and release is created in the codebase of the EE. Additionally, you will learn how to tag the EE images based on the tag name and push them to the Private Automation Hub.
-
-By the end of this workshop, you will have gained hands-on experience in building and deploying a custom EE using the GitOps framework and OpenShift pipeline.
 
 == Let's start by understanding EEs:
 

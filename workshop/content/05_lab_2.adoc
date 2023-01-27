@@ -1,6 +1,6 @@
 :numbered:
 :GUID: %guid%
-:BASE_DOMAIN: %sandbox_zone%
+:BASE_DOMAIN: FINDME
 :AC_URL: %ac_web_url%
 :AC_USER: %ac_user%
 :AC_PASSWORD: %ac_password%
@@ -19,7 +19,8 @@
 :BASTION_USER: %bastion_ssh_user_name%
 :BASTION_PASSWORD: %bastion_ssh_password%
 
-= Automated pipeline to build execution environment
+
+== Automated pipeline to build Execution Environment
 
 This section will guide you through the process of customizing, creating, and pushing execution environments (EEs) to a central image registry using openshift-pipelines. By leveraging the Git Ops framework, we can ensure consistency and reproducibility throughout the automation process. We will demonstrate the steps involved in customizing EEs using a Gitea repository, creating EEs using openshift-pipelines, scanning EEs for security vulnerabilities, and pushing the images to the Private Automation Hub. Additionally, we will show how to use the custom EEs pushed to the registry to run job templates from the Automation Controller. 
 

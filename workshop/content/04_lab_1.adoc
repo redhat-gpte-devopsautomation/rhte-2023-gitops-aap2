@@ -1,6 +1,6 @@
 :numbered:
 :GUID: %guid%
-:BASE_DOMAIN: %sandbox_zone%
+:BASE_DOMAIN: FINDME
 :AC_URL: %ac_web_url%
 :AC_USER: %ac_user%
 :AC_PASSWORD: %ac_password%
@@ -20,7 +20,7 @@
 :BASTION_PASSWORD: %bastion_ssh_password%
 
 
-= Pipeline to Build execution environment
+== Pipeline to Build Execution Environment
 
 In this section, you will be working closely with the Ansible developer to troubleshoot and resolve an issue that is causing a failure in the deployment of the application. Using your expertise in the OpenShift GitOps framework and the Automation Controller, you will investigate the root cause of the issue and implement a solution to ensure successful deployment in the future. 
 

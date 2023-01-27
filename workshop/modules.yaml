@@ -1,19 +1,19 @@
 ---
 modules:
-  00_goal_and_objective:
-    name: Goal and Objective
+  01_goal_and_objective:
+    name: "1- Goal and Objective"
     exit_sign: Introduction
-  01_introduction:
-    name: Managing Ansible Automation Platform Execution Environment through GitOps
-    exit_sign: Overview
-  02_overview:
-    name: Overview
+  02_introduction:
+    name: "2- Introduction"
+    exit_sign: Architecture
+  03_architecture :
+    name: "3- Architecture"
     exit_sign: LAB:1
-  03_lab_section_1:
-    name: Pipeline to Build Execution Environment
+  04_lab_1:
+    name: "4- LAB:1 Pipeline to Build EE"
     exit_sign: LAB:2
-  04_lab_section_2:
-    name: Automated Pipeline to Build EExecution Environment
+  05_lab_2:
+    name: "5- LAB:2 Automated Pipeline to Build EE"
     exit_sign: References
-  05_references:
-    name: References
+  06_references:
+    name: "Product Reference"

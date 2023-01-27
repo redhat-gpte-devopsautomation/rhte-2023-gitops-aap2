@@ -2,9 +2,9 @@
 name: Managing Ansible Automation Platform Execution Environment through GitOps
 modules:
   activate:
-    - 00_goal_and_objective
-    - 01_introduction
-    - 02_overview 
-    - 03_lab_section_1
-    - 04_lab_section_2
-    - 05_references
+    - 01_goal_and_objective
+    - 02_introduction
+    - 03_architecture 
+    - 04_lab_1
+    - 05_lab_2
+    - 06_references
