@@ -10,18 +10,20 @@
 :VSCODE_URL: %codeserver_url%
 :VSCODE_PASSWORD: %codeserver_password%
 :GITEA_URL: %gitea_console_url%
-:GITEA_USER: %bastion_ssh_user_name%
-:GITEA_PASSWORD: %bastion_ssh_password%
+:GITEA_USER: %ac_user%
+:GITEA_PASSWORD: %ac_password%
 :OC_CONSOLE_URL: %openshift_console_url%
 :OC_USER: %openshift_cluster_admin_username%
 :OC_PASSWORD: %openshift_cluster_admin_password%
-:BASTION_host: %bastion_public_hostname%
+:BASTION_HOST: %bastion_public_hostname%
 :BASTION_USER: %bastion_ssh_user_name%
 :BASTION_PASSWORD: %bastion_ssh_password%
 
 = Automated pipeline to build execution environment
 
-This section will guide you through the process of customizing, creating, and pushing execution environments (EEs) to a central image registry using openshift-pipelines. By leveraging the Git Ops framework, we can ensure consistency and reproducibility throughout the automation process. We will demonstrate the steps involved in customizing EEs using a private Gitea repository, creating EEs using openshift-pipelines, scanning EEs for security vulnerabilities, and pushing the images to the private Automation Hub. Additionally, we will show how to use the custom EEs pushed to the registry to run job templates from the Automation Controller. By the end of this workshop, you will have a deeper understanding of how to fully automate the process of building and deploying EEs within the Ansible Automation Platform using OpenShift Git Ops.
+This section will guide you through the process of customizing, creating, and pushing execution environments (EEs) to a central image registry using openshift-pipelines. By leveraging the Git Ops framework, we can ensure consistency and reproducibility throughout the automation process. We will demonstrate the steps involved in customizing EEs using a Gitea repository, creating EEs using openshift-pipelines, scanning EEs for security vulnerabilities, and pushing the images to the Private Automation Hub. Additionally, we will show how to use the custom EEs pushed to the registry to run job templates from the Automation Controller. 
+
+By the end of this workshop, you will have a deeper understanding of how to fully automate the process of building and deploying EEs within the Ansible Automation Platform using OpenShift Git Ops.
 
 .Automated Pipeline
 image:./images/pipeline_2.png[pipeline,600]

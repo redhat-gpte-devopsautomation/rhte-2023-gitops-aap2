@@ -1,4 +1,3 @@
-:numbered:
 
 = Managing Ansible Automation Platform Execution Environment through GitOps
 
