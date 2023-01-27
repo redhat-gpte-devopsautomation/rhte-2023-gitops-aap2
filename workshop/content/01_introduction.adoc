@@ -4,25 +4,23 @@
 
 
 == Introduction:
-Reproducibility and consistency are two key traits that are the driving forces behind the popularity of containers. Consistency is also a principle found within Red Hat Ansible Automation Platform. With only a few lines of YAML-formatted manifests, thousands of instances can be set up and configured unåiformly. While the management of target instances is simple, it is the control node, or where the Ansible execution is initiated, that can  be the most challenging aspect. As Ansible is written in Python, does the machine have the correct version of Python installed?  Are the necessary Python modules installed? Are there any operating system dependencies needed? The list goes on and on.
+The use of containers in automation is driven by the principles of reproducibility and consistency. The Red Hat Ansible Automation Platform also incorporates these principles through the use of YAML-formatted manifests, allowing for uniform setup and configuration of thousands of instances. However, managing the control node, or the location where Ansible execution is initiated, can be challenging due to factors such as the correct version of Python and necessary modules installed on the machine, as well as potential operating system dependencies.
 
-These concerns, along with many others, led to a desire to leverage the benefits of containers to perform the control node’s role and eventually ushered in the concept of automation execution environments in Ansible Automation Platform 2.
+To address these concerns, the concept of automation execution environments (EEs) has been introduced in Ansible Automation Platform 2. By utilizing containers and maintaining a single source of truth, organizations can utilize the Git Ops operational framework to apply DevOps best practices, such as version control, collaboration, compliance, and CI/CD tooling, to infrastructure automation.
 
-Since we leverage container’s and have a single source of truth, we can use the Git Ops operational framework that takes DevOps best practices used for application development such as version control, collaboration, compliance, and CI/CD tooling, and applies them to infrastructure automation. In this lab we GitOpsify how you create your Execution Environment based on your inputs by just updating Git repo and the rest is take care of giving you Infrastructure as a Code experience. 
+In this workshop, we will explore the process of customizing, creating, and pushing EEs to a central image registry using openshift-pipelines. Participants will learn how to use Git repository to customize EEs, create EEs using openshift-pipelines, scan and push EEs to a central image registry, and run job templates from the Automation Controller using custom EEs.
 
 == Objective:
 
-This workshop will help users understand how EEs are customized, created and pushed to registry using openshift-pipelines. 
+This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using openshift-pipelines. The following topics will be covered: 
 
-.Covered topics:
+. Demonstrating the steps involved in customizing EEs using a Git repository. 
 
-. Demonstrate the steps involved in the customizing EEs using Git repository. 
+. Demonstrating the steps involved in creating EEs using openshift-pipelines.
 
-. Demonstrate the steps involved in the creation EEs using openshift-pipelines.
+. Demonstrating the steps involved in scanning and pushing EEs to a central image registry.
 
-. Demonstrate the steps involved in scanning EEs container images and pushing in central image registry(Automation Hub).
-
-. Demonstrate the steps involved in using custom EEs pushed in registry to run Job template from Automation Controller
+. Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Automation Controller.
 
 
 == Let's start by understanding EEs:
@@ -36,10 +34,6 @@ The best way to build EEs is relying on a new tool provided by Red Hat® Ansible
 
 == Understanding Gitops:
 
-With the demands made on today’s infrastructure, it has become increasingly crucial to implement infrastructure automation. Modern infrastructure needs to be elastic so that it can effectively manage cloud resources that are needed for continuous deployments.
-Modern applications are developed with speed and scale in mind. Organizations with a mature DevOps culture can deploy code to production hundreds of times per day. DevOps teams can accomplish this through development best practices such as version control, code review, and CI/CD pipelines that automate testing and deployments.
-GitOps is used to automate the process of provisioning infrastructure, in this case custom Execution Environment. Similar to how teams use application source code, operations teams that adopt GitOps use configuration files stored as code (infrastructure as code). GitOps configuration files generate the same infrastructure environment every time it’s deployed, just as application source code generates the same application binaries every time it’s built.
-There are four key components to a GitOps workflow, a Git repository, a continuous integration / continuous delivery (CD) pipeline, an application deployment tool, and a monitoring system.
-The Git repository is the source of truth for the application configuration and code.
-The CI pipeline is responsible for building, testing, and deploying the application.
-The deployment tool is used to manage the application resources in the target environment.
+Infrastructure automation is essential to meet the demands of modern infrastructure. GitOps is a method used to automate the process of provisioning infrastructure, in this case custom EEs. Similar to how developers use application source code, operations teams that adopt GitOps use configuration files stored as code (infrastructure as code) to generate a consistent infrastructure environment every time it is deployed.
+
+The GitOps workflow consists of four key components: a Git repository, a CI/CD pipeline, a deployment tool, and a monitoring system. The Git repository serves as the source of truth for the configuration and code, the CI pipeline is responsible for building, testing, and deploying the application, the deployment tool manages the application resources in the target environment, and the monitoring system tracks the status and performance of the deployed application.
