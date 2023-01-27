@@ -10,8 +10,8 @@
 :VSCODE_URL: %codeserver_url%
 :VSCODE_PASSWORD: %codeserver_password%
 :GITEA_URL: %gitea_console_url%
-:GITEA_USER: %users.devops1.automation_controller_user%
-:GITEA_PASSWORD: %users.devops1.automation_controller_user_password%
+:GITEA_USER: %bastion_ssh_user_name%
+:GITEA_PASSWORD: %bastion_ssh_password%
 :OC_CONSOLE_URL: %openshift_console_url%
 :OC_USER: %openshift_cluster_admin_username%
 :OC_PASSWORD: %openshift_cluster_admin_password%
