@@ -46,4 +46,4 @@ The GitOps workflow consists of four key components:
 * A deployment tool
 * A monitoring system
 
-The Git repository serves as the source of truth for the configuration and code, the CI/CD pipe:line is responsible for building, testing, and deploying the application, the deployment tool manages the application resources in the target environment, and the monitoring system tracks the status and performance of the deployed application.
+The Git repository serves as the source of truth for the configuration and code, the CI/CD pipeline is responsible for building, testing, and deploying the application, the deployment tool manages the application resources in the target environment, and the monitoring system tracks the status and performance of the deployed application.

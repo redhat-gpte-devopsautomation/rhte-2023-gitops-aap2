@@ -1,32 +1,45 @@
 :numbered:
 
 == Red Hat OpenShift (OpenShift):
-Red Hat OpenShift brings together tested and trusted services to reduce the friction of developing, modernizing, deploying, running, and managing applications. Built on Kubernetes, it delivers a consistent experience across public cloud, on-premise, hybrid cloud, or edge architecture.
+
+Red Hat OpenShift brings together tested and trusted services to reduce the friction of developing, modernizing, deploying, running, and managing applications.
+Built on Kubernetes, it delivers a consistent experience across public cloud, on-premise, hybrid cloud, or edge architecture.
 Whether you're building new applications or modernizing existing ones, OpenShift supports the most demanding workloads including AI/ML, edge, and more
 
 == Red Hat Openshift-pipeline (Tekton):
-Red Hat OpenShift Pipelines provides a cloud-native continuous integration solution based on Tekton, a Continuous Delivery Foundation (CDF) project.
-OpenShift Pipelines provides a kubernetes-native CI/CD framework to design and run your pipelines, and is designed to run each step of the CI/CD pipeline in its own container, allowing each step to scale independently to meet the demands of the pipeline.
-By extending Kubernetes/OpenShift with Custom Resource Definitions (CRDs), OpenShift Pipelines makes CI/CD concepts such as a “pipeline”, a “task”, a “step” natively instantiatable so it can use the scalability, security, ease of deployment capabilities of Kubernetes.
 
-== Red Hat OpenShift Git Ops (ArgoCD):
-Red Hat OpenShift GitOps ensures consistency in applications when you deploy them to different clusters in different environments, such as: development, staging, and production. Red Hat OpenShift GitOps organizes the deployment process around the configuration repositories and makes them the central element. It always has at least two repositories:
-Application repository with the source code
-Environment configuration repository that defines the desired state of the application
-These repositories contain a declarative description of the infrastructure you need in your specified environment. They also contain an automated process to make your environment match the described state.
-Red Hat OpenShift GitOps uses Argo CD to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications. Red Hat OpenShift GitOps implements Argo CD as a controller so that it continuously monitors application definitions and configurations defined in a Git repository. Then, Argo CD compares the specified state of these configurations with their live state on the cluster.
-Argo CD reports any configurations that deviate from their specified state. These reports allow administrators to automatically or manually resync configurations to the defined state. Therefore, Argo CD enables you to deliver global custom resources, like the resources that are used to configure OpenShift Container Platform clusters.
+Red Hat OpenShift Pipelines provides a cloud-native continuous integration solution based on Tekton, a Continuous Delivery Foundation (CDF) project.
+OpenShift Pipelines provides a Kubernetes-native CI/CD framework to design and run your pipelines and is designed to run each step of the CI/CD pipeline in its own container, a modular approach allowing each step to scale independently to meet the demands of the pipeline.
+By extending Kubernetes/OpenShift with Custom Resource Definitions (CRDs), OpenShift Pipelines makes CI/CD concepts such as a “pipeline”, a “task”, a “step” natively instantiable so it can use the scalability, security, and ease of deployment capabilities of Kubernetes.
+
+== Red Hat OpenShift GitOps (ArgoCD):
+
+Red Hat OpenShift GitOps ensures consistency in applications when you deploy them to different clusters in different environments, such as development, staging, and production.
+Red Hat OpenShift GitOps organizes the deployment process around the configuration repositories and makes them the central element. It always has at least two repositories:
+
+* Application repository with the source code
+* Environment configuration repository that defines the desired state of the application
+
+These repositories contain a declarative description of the infrastructure you need in your specified environment.
+They also contain an automated process to make your environment match the described state.
+Red Hat OpenShift GitOps uses ArgoCD to maintain cluster resources. ArgoCD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.
+
+Red Hat OpenShift GitOps implements ArgoCD as a controller so that it continuously monitors application definitions and configurations defined in a Git repository.
+Then, ArgoCD compares the specified state of these configurations with their live state on the cluster.
+ArgoCD reports any configurations that deviate from their specified state. These reports allow administrators to automatically or manually resync configurations to the defined state. Therefore, ArgoCD enables you to deliver global custom resources, like the resources that are used to configure OpenShift Container Platform clusters.
 
 == Red Hat Advance Cluster Security (StackRox):
+
 Red Hat Advanced Cluster Security for Kubernetes,  powered by StackRox, protects your vital applications across build, deploy, and runtime. Our software deploys in your Kubernetes infrastructure as a self-managed security solution or you can consume it as a fully managed Software-as-a-Service (SaaS). Additionally, it integrates with your existing DevOps tooling and workflows to deliver better security and compliance. The policy engine includes hundreds of built-in controls to enforce DevOps and security-focused best practices based on industry standards such as Center for Internet Security (CIS) Benchmarks and National Institute of Standards Technology (NIST) guidelines, configuration management of both containers and Kubernetes, and runtime security. 
 Red Hat Advanced Cluster Security provides a Kubernetes-native architecture for platform and application security, allowing DevOps and InfoSec teams to operationalize security.
 
 == Red Hat Ansible Automation Platform (AWX):
+
 Red Hat Ansible® Automation Platform is a foundation for building and operating automation across an organization. The platform includes all the tools needed to implement enterprise-wide automation.
 Ansible Automation Platform provides an enterprise framework for building and operating IT automation at scale, from hybrid cloud to the edge. It enables users across an organization to create, share, and manage automation—from development and operations to security and network teams.
 
 == Gitea:
-Gitea is a community managed lightweight code hosting solution written in Go.
+Gitea is a community-managed lightweight git repository hosting solution written in Go.
 
-== Vscode:
+== VScode:
 Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux.
