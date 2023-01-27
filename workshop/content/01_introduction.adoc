@@ -25,9 +25,7 @@ This workshop aims to provide participants with an understanding of how EEs can 
 
 == Let's start by understanding EEs:
 
-Automation execution environments are container images on which all automation in Red Hat® Ansible® Automation Platform is run.
-
-They provide a defined, consistent, and portable environment for executing automation, and allow for easier administration of Ansible Automation Platform by the platform administrator.
+Automation execution environments (EEs) are container images on which all automation in Red Hat Ansible Automation Platform is run. They provide a defined, consistent, and portable environment for executing automation, and simplify the administration of Ansible Automation Platform for the platform administrator.
 
 The best way to build EEs is relying on a new tool provided by Red Hat® Ansible® Automation Platform, the ansible-builder cli. In order to automate the build of EEs, we can make use of OpenShift Pipelines as well.
 
