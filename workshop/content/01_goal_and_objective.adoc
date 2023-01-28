@@ -1,21 +1,22 @@
 
 == Goal
 
-In this workshop, you will learn how to utilize the openshift-pipeline (tekton) as the CI to fully automate the tasks from building a custom EE that includes the missing community.postgresql collection, to updating the Job template on Automation Controller with the newly built EE and running the Job template as part of the same CI process.
+In this workshop, you will learn how to utilize Openshift Pipelines (Tekton) as Continuous Integration (CI) to fully automate the task for building a custom Ansible Execution Environment (EE) that includes the missing `community.postgresql` collection, to updating the *Job Template* on Ansible Automation Platform  Controller with the newly built EE and running the Job template as part of the same CI process.
 
-You will also learn how to use a webhook created on Gitea to trigger the pipeline only when a new tag and release is created in the codebase of the EE. Additionally, you will learn how to tag the EE images based on the tag name and push them to the Private Automation Hub.
+You will also learn how to create, and use, a webhook with Git Repository Gitea and to trigger the pipeline only when a new tag and release is created in the codebase of the EE. 
+Additionally, you will learn how to tag the EE images based on the tag name and push them to the Private Automation Hub.
 
-By the end of this workshop, you will have gained hands-on experience in building and deploying a custom EE using the GitOps framework and OpenShift pipeline.
+By the end of this workshop, you will have gained Hands-On experience in building and deploying a custom EE using the GitOps framework and OpenShift Pipelines.
 
 
 == Objectives:
 
-This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using openshift-pipelines. The following topics will be covered: 
+This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using Openshift Pipelines. The following topics will be covered: 
 
 . Demonstrating the steps involved in customizing EEs using a Git repository. 
 
-. Demonstrating the steps involved in creating EEs using openshift-pipelines.
+. Demonstrating the steps involved in creating EEs using Openshift Pipelines.
 
-. Demonstrating the steps involved in scanning and pushing EEs to a central image registry.
+. Demonstrating the steps involved in scanning and pushing EEs to an image registry (Private Ansible Automation Hub).
 
-. Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Automation Controller.
+. Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Ansible Automation Controller.

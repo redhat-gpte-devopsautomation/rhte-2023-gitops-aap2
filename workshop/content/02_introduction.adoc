@@ -1,20 +1,48 @@
 == Managing Ansible Automation Platform Execution Environment through GitOps
 
-The use of containers in automation is driven by the principles of reproducibility and consistency. The Red Hat Ansible Automation Platform also incorporates these principles through the use of YAML-formatted manifests, allowing for uniform setup and configuration of thousands of instances. However, managing the control node, or the location where Ansible execution is initiated, can be challenging due to factors such as the correct version of Python and necessary modules installed on the machine, as well as potential operating system dependencies.
+The use of containers in automation is driven by the principles of reproducibility and consistency.
+Red Hat Ansible Automation Platform (AAP) also incorporates these principles through the use of YAML-formatted playbooks, allowing for uniform setup and 
+configuration of thousands of instances.
+However, managing the control node, where Ansible execution is initiated, can be challenging due to factors such as the correct version of Python, Ansible Collections and Roles, and their, often, complex Python dependencies.
+Many practitioners are all too familiar with juggling Python Virtual Environments(venvs) as one imperfect approach to this approach.
 
-To address these concerns, the concept of automation execution environments (EEs) has been introduced in Ansible Automation Platform 2. By utilizing containers and maintaining a single source of truth, organizations can utilize the Git Ops operational framework to apply DevOps best practices, such as version control, collaboration, compliance, and CI/CD tooling, to infrastructure automation.
+To address these concerns, the concept of automation execution environments (EEs) has been introduced in Ansible Automation Platform 2.
+By utilizing containers and maintaining a single source of truth, organizations can utilize the GitOps operational framework to apply DevOps best practices, such as version control, collaboration, compliance, and CI/CD tooling, to infrastructure automation.
 
-In this workshop, we will explore the process of customizing, creating, and pushing EEs to a central image registry using openshift-pipelines. Participants will learn how to use Git repository to customize EEs, create EEs using openshift-pipelines, scan and push EEs to a central image registry, and run job templates from the Automation Controller using custom EEs.
+In this workshop, we will explore the process of customizing, creating, and pushing EEs to a central image registry using OpenShift Pipelines. 
+Participants will learn how to use a Git repository to customize EEs, create EEs using OpenShift Pipelines, scan and push EEs to a central image registry, and run job templates from the Automation Controller using custom EEs.
+
+== Objectives:
+
+This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using OpenShift Pipelines. The following topics will be covered: 
+
+. Demonstrating the steps involved in customizing EEs using a Git repository. 
+
+. Demonstrating the steps involved in creating EEs using OpenShift Pipelines.
+
+. Demonstrating the steps involved in scanning and pushing EEs to a central image registry.
+
+. Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Automation Controller.
 
 == Let's start by understanding EEs:
 
 Automation execution environments (EEs) are container images on which all automation in Red Hat Ansible Automation Platform is run. They provide a defined, consistent, and portable environment for executing automation, and simplify the administration of Ansible Automation Platform for the platform administrator.
 
-The best way to build EEs is relying on a new tool provided by Red Hat® Ansible® Automation Platform, the ansible-builder cli. In order to automate the build of EEs, we can make use of OpenShift Pipelines as well.
+The best way to build EEs is by relying on a new tool provided by Red Hat® Ansible® Automation Platform, the `ansible-builder` CLI (Command Line Interface) client.
+In order to automate the build of EEs, we can make use of OpenShift Pipelines as well.
 
 
-== Understanding Gitops:
+== Understanding GitOps:
 
-Infrastructure automation is essential to meet the demands of modern infrastructure. GitOps is a method used to automate the process of provisioning infrastructure, in this case custom EEs. Similar to how developers use application source code, operations teams that adopt GitOps use configuration files stored as code (infrastructure as code) to generate a consistent infrastructure environment every time it is deployed.
+Infrastructure automation is essential to meet the demands of modern infrastructure.
+GitOps is a method used to automate the process of provisioning infrastructure, in this case, custom EEs.
+Similar to how developers use application source code, operations teams that adopt GitOps use configuration files stored as code (IaC - Infrastructure as Code) to generate a consistent infrastructure environment every time it is deployed.
 
-The GitOps workflow consists of four key components: a Git repository, a CI/CD pipeline, a deployment tool, and a monitoring system. The Git repository serves as the source of truth for the configuration and code, the CI pipeline is responsible for building, testing, and deploying the application, the deployment tool manages the application resources in the target environment, and the monitoring system tracks the status and performance of the deployed application.
+The GitOps workflow consists of four key components:
+
+* Git repository
+* CI/CD pipeline
+* A deployment tool
+* A monitoring system
+
+The Git repository serves as the source of truth for the configuration and code, the CI/CD pipeline is responsible for building, testing, and deploying the application, the deployment tool manages the application resources in the target environment, and the monitoring system tracks the status and performance of the deployed application.

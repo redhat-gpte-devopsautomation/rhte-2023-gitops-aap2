@@ -1,4 +1,5 @@
 ---
+
 modules:
   01_goal_and_objective:
     name: "1- Goal and Objective"
@@ -6,7 +7,7 @@ modules:
   02_introduction:
     name: "2- Introduction"
     exit_sign: Architecture
-  03_architecture :
+  03_architecture:
     name: "3- Architecture"
     exit_sign: LAB:1
   04_lab_1:
