@@ -6,19 +6,6 @@ To address these concerns, the concept of automation execution environments (EEs
 
 In this workshop, we will explore the process of customizing, creating, and pushing EEs to a central image registry using openshift-pipelines. Participants will learn how to use Git repository to customize EEs, create EEs using openshift-pipelines, scan and push EEs to a central image registry, and run job templates from the Automation Controller using custom EEs.
 
-== Objective:
-
-This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using openshift-pipelines. The following topics will be covered: 
-
-. Demonstrating the steps involved in customizing EEs using a Git repository. 
-
-. Demonstrating the steps involved in creating EEs using openshift-pipelines.
-
-. Demonstrating the steps involved in scanning and pushing EEs to a central image registry.
-
-. Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Automation Controller.
-
-
 == Let's start by understanding EEs:
 
 Automation execution environments (EEs) are container images on which all automation in Red Hat Ansible Automation Platform is run. They provide a defined, consistent, and portable environment for executing automation, and simplify the administration of Ansible Automation Platform for the platform administrator.
