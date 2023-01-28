@@ -8,7 +8,7 @@ You will also learn how to use a webhook created on Gitea to trigger the pipelin
 By the end of this workshop, you will have gained hands-on experience in building and deploying a custom EE using the GitOps framework and OpenShift pipeline.
 
 
-== Objective:
+== Objectives:
 
 This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using openshift-pipelines. The following topics will be covered: 
 
