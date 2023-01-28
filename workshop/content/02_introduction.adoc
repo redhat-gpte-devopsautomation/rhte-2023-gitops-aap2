@@ -4,7 +4,7 @@ The use of containers in automation is driven by the principles of reproducibili
 Red Hat Ansible Automation Platform (AAP) also incorporates these principles through the use of YAML-formatted playbooks, allowing for uniform setup and 
 configuration of thousands of instances.
 However, managing the control node, where Ansible execution is initiated, can be challenging due to factors such as the correct version of Python, Ansible Collections and Roles, and their, often, complex Python dependencies.
-Many practitioners are all too familiar with juggling Python Virtual Environments, or venvs, as one imperfect approach to this approach.
+Many practitioners are all too familiar with juggling Python Virtual Environments(venvs) as one imperfect approach to this approach.
 
 To address these concerns, the concept of automation execution environments (EEs) has been introduced in Ansible Automation Platform 2.
 By utilizing containers and maintaining a single source of truth, organizations can utilize the GitOps operational framework to apply DevOps best practices, such as version control, collaboration, compliance, and CI/CD tooling, to infrastructure automation.

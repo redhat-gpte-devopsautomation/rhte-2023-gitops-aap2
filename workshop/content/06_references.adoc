@@ -33,12 +33,15 @@ ArgoCD reports any configurations that deviate from their specified state. These
 Red Hat Advanced Cluster Security for Kubernetes,  powered by StackRox, protects your vital applications across build, deploy, and runtime. Our software deploys in your Kubernetes infrastructure as a self-managed security solution or you can consume it as a fully managed Software-as-a-Service (SaaS). Additionally, it integrates with your existing DevOps tooling and workflows to deliver better security and compliance. The policy engine includes hundreds of built-in controls to enforce DevOps and security-focused best practices based on industry standards such as Center for Internet Security (CIS) Benchmarks and National Institute of Standards Technology (NIST) guidelines, configuration management of both containers and Kubernetes, and runtime security. 
 Red Hat Advanced Cluster Security provides a Kubernetes-native architecture for platform and application security, allowing DevOps and InfoSec teams to operationalize security.
 
-== Red Hat Ansible Automation Platform (AWX):
+== Red Hat Ansible Automation Platform 2 (AAP2):
 
-Red Hat Ansible® Automation Platform is a foundation for building and operating automation across an organization. The platform includes all the tools needed to implement enterprise-wide automation.
-Ansible Automation Platform provides an enterprise framework for building and operating IT automation at scale, from hybrid cloud to the edge. It enables users across an organization to create, share, and manage automation—from development and operations to security and network teams.
+Red Hat Ansible® Automation Platform 2 is a platform for building and operating automation across an organization.
+The platform includes all the tools needed to implement enterprise-wide automation.
+Ansible Automation Platform provides an enterprise framework for building and operating IT automation at scale, from hybrid cloud to the edge.
+It enables users across an organization to create, share, and manage automation—from development and operations to security and network teams.
 
 == Gitea:
+
 Gitea is a community-managed lightweight git repository hosting solution written in Go.
 
 == VScode:
