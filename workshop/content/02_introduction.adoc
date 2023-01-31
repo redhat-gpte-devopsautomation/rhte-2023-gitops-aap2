@@ -12,17 +12,6 @@ By utilizing containers and maintaining a single source of truth, organizations 
 In this workshop, we will explore the process of customizing, creating, and pushing EEs to a central image registry using OpenShift Pipelines. 
 Participants will learn how to use a Git repository to customize EEs, create EEs using OpenShift Pipelines, scan and push EEs to a central image registry, and run job templates from the Automation Controller using custom EEs.
 
-== Objectives:
-
-This workshop aims to provide participants with an understanding of how EEs can be customized, created, and pushed to a central image registry using OpenShift Pipelines. The following topics will be covered: 
-
-. Demonstrating the steps involved in customizing EEs using a Git repository. 
-
-. Demonstrating the steps involved in creating EEs using OpenShift Pipelines.
-
-. Demonstrating the steps involved in scanning and pushing EEs to a central image registry.
-
-. Demonstrating the steps involved in using custom EEs pushed to the registry to run job templates from the Automation Controller.
 
 == Let's start by understanding EEs:
 
